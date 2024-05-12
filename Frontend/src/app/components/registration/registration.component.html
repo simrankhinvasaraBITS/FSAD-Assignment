@@ -1,0 +1,138 @@
+
+<div class="container register">
+    <div class="row">
+        <div class="col-md-9 register-right">
+            <div class="tab-content" id="myTabContent">
+                <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                    <h3 class="register-heading">User Registration</h3>
+                    <small class="text-danger"><b>{{msg}}</b></small>
+                    <form #userform="ngForm" (ngSubmit)="registerUser()">
+                    <div class="row register-form">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="firstname">Firstname<b class="text-danger">*</b></label>
+                                <input type="text" class="form-control" placeholder="firstname" name="firstname" [(ngModel)]="user.firstname" required 
+                                #firstname="ngModel"
+                                [class.is-invalid]="firstname.invalid && firstname.touched">
+                                <!-- <small class="text-danger" [class.d-none]="username.valid || username.untouched"><b>required field</b></small> -->
+                            </div>
+                            <div class="form-group">
+                                <label for="lastname">Lastname<b class="text-danger">*</b></label>
+                                <input type="text" class="form-control" placeholder="lastname" name="lastname" [(ngModel)]="user.lastname" required 
+                                #lastname="ngModel"
+                                [class.is-invalid]="lastname.invalid && lastname.touched">
+                                <!-- <small class="text-danger" [class.d-none]="username.valid || username.untouched"><b>required field</b></small> -->
+                            </div>
+                            <div class="form-group">
+                                <label for="username">Username<b class="text-danger">*</b></label>
+                                <input type="text" class="form-control" placeholder="username" name="username" [(ngModel)]="user.username" required 
+                                #username="ngModel"
+                                [class.is-invalid]="username.invalid && username.touched">
+                                <!-- <small class="text-danger" [class.d-none]="username.valid || username.untouched"><b>required field</b></small> -->
+                            </div>
+                            <div class="form-group">
+                                <label for="usergender">Gender<b class="text-danger">*</b></label><br>
+                                <div class="form-check form-check-inline">                 
+                                    <input id="male" type="radio" class="form-check-input" value="male" name="gender" 
+                                    [(ngModel)]="user.gender" required 
+                                    #usergender="ngModel"
+                                    [class.is-invalid]="usergender.invalid && usergender.touched">
+                                    <label class="form-check-label" for="male">Male</label>
+                                </div>
+                                <div class="form-check form-check-inline">                 
+                                    <input id="female" type="radio" class="form-check-input" value="female" name="gender" [(ngModel)]="user.gender" required 
+                                    #usergender="ngModel"
+                                    [class.is-invalid]="usergender.invalid && usergender.touched">
+                                    <label class="form-check-label" for="female">Female</label>
+                                </div>
+
+                                <!-- <div class="form-check form-check-inline">
+                                    <input
+                                      class="form-check-input" type="radio" id="male" value="male" name="gender"
+                                      [(ngModel)]="user.gender" required #usergender="ngModel" [class.is-invalid]="usergender.invalid && usergender.touched"
+                                    />
+                                    <label class="form-check-label" for="usergender">Male</label>
+                                  </div>
+                                  <div class="form-check form-check-inline">
+                                    <input
+                                      mdbRadio
+                                      class="form-check-input"
+                                      type="radio"
+                                      name="inlineRadioOptions"
+                                      id="inlineRadio2"
+                                      value="option2"
+                                    />
+                                    <label class="form-check-label" for="inlineRadio2">Female</label>
+                                  </div> -->
+
+                                <!-- <small class="text-danger" [class.d-none]="usergender.valid || usergender.untouched"><b>required field</b></small> -->
+                            </div>
+                            <div class="form-group">
+                                <label for="userprofession">Profession<b class="text-danger">*</b></label>
+                                <input type="text" class="form-control" placeholder="profession" name="userprofession" [(ngModel)]="user.profession" required 
+                                #userprofession="ngModel"
+                                [class.is-invalid]="userprofession.invalid && userprofession.touched">
+                                <!-- <small class="text-danger" [class.d-none]="userprofession.valid || userprofession.untouched"><b>required field</b></small> -->
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="useremail">Email ID<b class="text-danger">*</b></label>
+                                <input type="email" class="form-control" placeholder="email id" name="useremail" [(ngModel)]="user.email" required pattern="^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]+$"
+                                #useremail="ngModel"
+                                [class.is-invalid]="useremail.invalid && useremail.touched">
+                                <div *ngIf="useremail.errors && (useremail.invalid && useremail.touched)">
+                                    <!-- <small class="text-danger" *ngIf="useremail.errors.required"><b>required field</b></small> -->
+                                    <small class="text-danger" *ngIf="useremail.errors.pattern"><b>Invalid email Id</b></small>
+                                  </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="usermobile">Mobile No<b class="text-danger">*</b></label>
+                                <input type="tel" maxlength="10" minlength="10" class="form-control" placeholder="mobile" name="usermobile" [(ngModel)]="user.mobile" required 
+                                #usermobile="ngModel"
+                                [class.is-invalid]="usermobile.invalid && usermobile.touched">
+                                <!-- <small class="text-danger" [class.d-none]="usermobile.valid || usermobile.untouched"><b>required field</b></small> -->
+                            </div>
+                            <div class="form-group">
+                                <label for="useraddress">Address<b class="text-danger">*</b></label>
+                                <input type="text" class="form-control" placeholder="address" name="useraddress" [(ngModel)]="user.address" required 
+                                #useraddress="ngModel"
+                                [class.is-invalid]="useraddress.invalid && useraddress.touched">
+                                <!-- <small class="text-danger" [class.d-none]="useraddress.valid || useraddress.untouched"><b>required field</b></small> -->
+                            </div>
+                            <div class="form-group">
+                                <label for="pwd">Password<b class="text-danger">*</b></label>
+                                <input type="password" class="form-control" placeholder="Password" name="pwd" [(ngModel)]="user.password" required 
+                                #userpassword="ngModel"
+                                [class.is-invalid]="userpassword.invalid && userpassword.touched">
+                                <div *ngIf="userpassword.errors && userpassword.invalid && userpassword.touched">
+                                  <small class="text-danger" *ngIf="userpassword.errors.required"><b>required field</b></small>
+                                </div>
+                                <small style="color: gray; font-size: 10px;">atleast one uppercase, numeric digit, lowercase, special character, length of 6-20</small>
+                            </div>
+                            <div class="form-group">
+                                <label for="pwd">Confirm Password<b class="text-danger">*</b></label>
+                                <input type="password" class="form-control"  placeholder="Confirm Password" name="ConfirmPassword" (ngModel)="user.password" required 
+                                #userconfirmPassword="ngModel"
+                                [class.is-invalid]="userconfirmPassword.invalid && userconfirmPassword.touched">
+                                <!--<div style="margin-top: -4%; margin-bottom: 3%;" *ngIf="userconfirmPassword.valid || userconfirmPassword.touched">
+                                    <small class="text-danger" *ngIf="(userconfirmPassword.value == userpassword.value) || userconfirmPassword.touched"><b>password not matched</b></small>
+                                </div>-->
+                                <small class="text-danger" [class.d-none]="(userconfirmPassword.value == userpassword.value) || userconfirmPassword.untouched"><b>password not matched</b></small>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="checkbox" style="margin-top: -8%; margin-left: 11%;">
+                        <small style="color: gray;"><input type="checkbox" class="checkbox" name="remember" required> I agree to all Terms & Conditions</small>
+                    </div>
+                    <div style="margin-top: -3%; margin-left: 58.5%; margin-bottom: 3%; color: rgb(0, 0, 0); font-size: 16px;">Already have an Account? 
+                        <small [routerLink]="['/login']" style="color: navy; text-align: center; cursor: pointer;"><b>click here</b></small>
+                    </div>
+                    <button [disabled]="userform.form.invalid" type="submit" class="btnRegister">Register</button>
+                </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>				                            

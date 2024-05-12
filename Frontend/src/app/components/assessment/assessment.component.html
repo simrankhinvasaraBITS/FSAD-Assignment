@@ -1,0 +1,23 @@
+<app-header></app-header>
+
+
+<div *ngIf="currRole === 'user'" class="heading-text" style="color: darkgreen;"><b><i style="color: darkred;" class="fa fa-leanpub"></i> Take Assessments</b></div>
+<div class="row">
+    <div *ngFor="let assessment of assessment" class="col-4 card" id="bloodCards">
+        <div class="img-block">
+            <div class="circle">
+                <img *ngIf="assessment.coursetype === 'Website'" class="bloodimg" [src]="'assets/img/website.png'" width="120" height="100">
+            </div>
+        </div>
+        <div class="card-block">
+            <div class="text"><b style="color: darkred; font-size: large;">Level :</b> {{assessment.skilllevel}}</div>
+            <div class="text"><b style="color: darkred; font-size: large;">Language :</b> {{assessment.language}}</div>
+            <div class="text"><b style="color: darkred; font-size: large;">Description: </b> {{assessment.desc}}</div><br>
+            <div class="text"><b style="color: darkred; font-size: large;">Time: </b> {{assessment.time}}</div>
+            <a *ngIf="assessment.coursetype === 'Website'" (click)="openURL(assessment.websiteurl)" style="margin-top: 5%; border: none;" id="enrollsuccessbtn" class="btn btn-primary">Take Assessment</a>
+        </div> 
+    </div>
+  </div>
+
+<br><br><br>
+<app-footer></app-footer>
